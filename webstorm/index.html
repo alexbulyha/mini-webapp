@@ -9,20 +9,31 @@
     <link rel="stylesheet" href="todo.css">
 </head>
 <body>
-<h2>Todo</h2>
+
+
+
 <div ng-controller="elastCtrl as elastCtrl">
+    <label>Search for movie:</label>
+    <form ng-submit="elastCtrl.search()">
+        <input type="text" ng-model="elastCtrl.searchterm"  size="30"
+               placeholder="Movie Title">
+        <input class="btn-primary" type="submit" value="add">
+    </form>
+    Last searchterm: {{lastsearchterm}} <br>
+    <br>
+    <br>
+    <br>
 
-
-
-    {{namex}}<br>
-    {{elastCtrl.name}} <br>
     Testmovies: <br>
     <li ng-repeat="movie in testmovies">
         <span>{{movie.Title}}</span>
         <p>{{movie.Plot}}</p>
     </li>
     Search: <br>
-    <li ng-repeat="movie in movies">{{movie.Title}} </li>
+    <li ng-repeat="movie in movies">{{movie._source.Title}} </li>
+    {{number}}          ///the number of all elements in library
+    <br>
+    {{movie1.title}}   ///the get command
 
 </body>
 </html>
