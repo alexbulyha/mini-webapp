@@ -1,0 +1,22 @@
+[2015-07-09 14:59:42,742][WARN ][bootstrap                ] Unable to lock JVM memory (ENOMEM). This can result in part of the JVM being swapped out. Increase RLIMIT_MEMLOCK (ulimit).
+[2015-07-09 14:59:42,823][INFO ][node                     ] [In_Webstorm] version[1.6.0], pid[17001], build[cdd3ac4/2015-06-09T13:36:34Z]
+[2015-07-09 14:59:42,824][INFO ][node                     ] [In_Webstorm] initializing ...
+[2015-07-09 14:59:42,827][INFO ][plugins                  ] [In_Webstorm] loaded [], sites []
+[2015-07-09 14:59:42,867][INFO ][env                      ] [In_Webstorm] using [1] data paths, mounts [[/ (/dev/sda7)]], net usable_space [659.4gb], net total_space [706.4gb], types [ext4]
+[2015-07-09 14:59:45,086][INFO ][node                     ] [In_Webstorm] initialized
+[2015-07-09 14:59:45,086][INFO ][node                     ] [In_Webstorm] starting ...
+[2015-07-09 14:59:45,148][INFO ][transport                ] [In_Webstorm] bound_address {inet[/0:0:0:0:0:0:0:0:9300]}, publish_address {inet[/192.168.1.104:9300]}
+[2015-07-09 14:59:45,161][INFO ][discovery                ] [In_Webstorm] elasticsearch_test/a9ST0BDjTdam5FOwCZdozw
+[2015-07-09 14:59:48,938][INFO ][cluster.service          ] [In_Webstorm] new_master [In_Webstorm][a9ST0BDjTdam5FOwCZdozw][work-pc][inet[/192.168.1.104:9300]], reason: zen-disco-join (elected_as_master)
+[2015-07-09 14:59:48,954][INFO ][http                     ] [In_Webstorm] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/192.168.1.104:9200]}
+[2015-07-09 14:59:48,954][INFO ][node                     ] [In_Webstorm] started
+[2015-07-09 14:59:49,018][INFO ][gateway                  ] [In_Webstorm] recovered [0] indices into cluster_state
+[2015-07-09 15:09:41,284][INFO ][cluster.metadata         ] [In_Webstorm] [.marvel-kibana] creating index, cause [auto(index api)], templates [], shards [5]/[1], mappings [appdata]
+[2015-07-09 15:09:41,607][INFO ][gateway.local.state.meta ] [In_Webstorm] [library] dangling index, exists on local file system, but not in cluster metadata, auto import to cluster state [YES]
+[2015-07-09 15:09:41,641][INFO ][gateway.local.state.meta ] [In_Webstorm] [.marvel-2015.07.07] dangling index, exists on local file system, but not in cluster metadata, auto import to cluster state [YES]
+[2015-07-09 15:09:41,671][INFO ][gateway.local.state.meta ] [In_Webstorm] [.marvel-2015.07.08] dangling index, exists on local file system, but not in cluster metadata, auto import to cluster state [YES]
+[2015-07-09 15:09:41,694][INFO ][gateway.local.state.meta ] [In_Webstorm] [.marvel-2015.07.06] dangling index, exists on local file system, but not in cluster metadata, auto import to cluster state [YES]
+[2015-07-09 15:09:41,695][INFO ][gateway.local.state.meta ] [In_Webstorm] [test_index] dangling index, exists on local file system, but not in cluster metadata, auto import to cluster state [YES]
+[2015-07-09 15:09:41,714][INFO ][gateway.local.state.meta ] [In_Webstorm] [.marvel-2015.07.09] dangling index, exists on local file system, but not in cluster metadata, auto import to cluster state [YES]
+[2015-07-09 15:09:42,173][INFO ][gateway.local.state.meta ] [In_Webstorm] auto importing dangled indices [.marvel-2015.07.09/OPEN][test_index/OPEN][.marvel-2015.07.08/OPEN][.marvel-2015.07.07/OPEN][.marvel-2015.07.06/OPEN][library/OPEN] from [[In_Webstorm][a9ST0BDjTdam5FOwCZdozw][work-pc][inet[/192.168.1.104:9300]]]
+[2015-07-09 15:09:44,407][INFO ][cluster.metadata         ] [In_Webstorm] [.marvel-kibana] update_mapping [appdata] (dynamic)
