@@ -5,6 +5,7 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
     <script src="elasticsearch-js/elasticsearch.angular.js"></script>
+    <script src="elasticsearch-js/elasticsearch.js"></script>
     <script src="elastsearchApp.js"></script>
     <link rel="stylesheet" href="todo.css">
 </head>
@@ -30,11 +31,15 @@
         <p>{{movie.Plot}}</p>
     </li>
     Search: <br>
-    <li ng-repeat="movie in movies">{{movie._source.Title}} </li>
+    <li ng-repeat="movie in movies">{{movie | json}} </li>
     {{number}}          ///the number of all elements in library
-    <br>
-    {{movie1.title}}   ///the get command
+    <br><br>
+    {{movie1._source.Title}}   ///the get command of the 1 movie <br><br><br>
+    {{clusterState | json}}
+    {{error }}<br>
+    {{error2}}
 
+</div>
 </body>
 </html>
 
