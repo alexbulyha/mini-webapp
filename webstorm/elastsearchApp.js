@@ -10,40 +10,47 @@ elastsearchApp.controller('elastCtrl', function($scope, client, esFactory) {
 
     var elastCtrl = this;
 
-    $scope.movies = [];
     elastCtrl.name='hehe';
 
     elastCtrl.search = function () {
         $scope.lastsearchterm = elastCtrl.searchterm;
-
         client.search({
             index: 'library',
             type: 'movies',
             body: {
                 query: {
                     match: {
-                        Title: elastCtrl.searchterm
+                        Title: $scope.lastsearchterm
                     }
                 }
             }
         }).then(function(resp) {
-            movies = resp.hits.hits;
+            $scope.movies = resp.hits.hits;
         }, function (err) {
             console.trace(err.message);
         })  ;
+
+
         elastCtrl.searchterm = '';
 
-        client.count({
-            index: 'library'
-        }).then(function (resp) {
-            $scope.number=resp.count;
-        }, function (err) {
-            console.trace(err.message);
-            $scope.number =0;
-        });
+
     };
 
-    client.search({
+
+
+
+
+    client.count({
+        index: 'library'
+    }).then(function (resp) {
+        $scope.number=resp.count;
+    }, function (err) {
+        console.trace(err.message);
+        $scope.number =0;
+    });
+
+
+    client.search({     //testsearch
         index: 'library',
         type: 'movies',
         body: {
@@ -54,21 +61,11 @@ elastsearchApp.controller('elastCtrl', function($scope, client, esFactory) {
             }
         }
     }).then(function(resp) {
-        movies = resp.hits.hits;
+        $scope.movietest = resp.hits.hits;
     }, function (err) {
         console.trace(err.message);
     })
 
-
-
-    $scope.testmovies = [
-        {'Title': 'film 1',
-            'Plot': 'plot 1'},
-        {'Title': 'film 2',
-            'Plot': 'plot 2'},
-        {'Title': 'film 3',
-            'Plot': 'plot 3'}
-    ];
 
     client.cluster.state({
         metric: [

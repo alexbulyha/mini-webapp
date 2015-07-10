@@ -25,19 +25,18 @@
     <br>
     <br>
 
-    Testmovies: <br>
-    <li ng-repeat="movie in testmovies">
-        <span>{{movie.Title}}</span>
-        <p>{{movie.Plot}}</p>
-    </li>
+
     Search: <br>
-    <li ng-repeat="movie in movies">{{movie | json}} </li>
+    <li ng-repeat="movie in movies">{{movie | json}} </li><br><br><br>
     {{number}}          ///the number of all elements in library
     <br><br>
     {{movie1._source.Title}}   ///the get command of the 1 movie <br><br><br>
     {{clusterState | json}}
     {{error }}<br>
-    {{error2}}
+    {{error2}}<br>
+    <br>
+    <br>Test of query syntax:
+    {{movietest | json}}
 
 </div>
 </body>
