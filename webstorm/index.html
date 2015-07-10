@@ -4,39 +4,106 @@
 <html ng-app="elastsearchApp">
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="elasticsearch-js/elasticsearch.angular.js"></script>
     <script src="elasticsearch-js/elasticsearch.js"></script>
     <script src="elastsearchApp.js"></script>
-    <link rel="stylesheet" href="todo.css">
+
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="webApp.css">
+    <link href="webApp.css" rel="stylesheet">
+
 </head>
-<body>
+<body ng-controller="elastCtrl as elastCtrl">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Movie Library</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Log-in</a></li>
+                <li><a href="#">Credits</a></li>
+            </ul>
+            <form class="navbar-form" ng-submit="elastCtrl.search()">
+                <input type="text" class="form-control" ng-model="elastCtrl.searchterm"  size="30"
+                       placeholder="Movie Title">
+                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i> Search for Movie</button>
+            </form>
+
+        </div>
+    </div>
+</nav>
+<div>
+    Movies in Library: {{number}} <br><br>
 
 
 
-<div ng-controller="elastCtrl as elastCtrl">
-    <label>Search for movie:</label>
-    <form ng-submit="elastCtrl.search()">
-        <input type="text" ng-model="elastCtrl.searchterm"  size="30"
-               placeholder="Movie Title">
-        <input class="btn-primary" type="submit" value="add">
-    </form>
-    Last searchterm: {{lastsearchterm}} <br>
+    <h4 class="sub-header">Search Results</h4><br>
+    <div ng-repeat="movie in movies">
+        <button ng-click="count = (count +1)%2" ng-init="count=0">
+            {{movie._source.Title}}
+        </button>
+        <div ng-show="count">
+            <table>
+                <tr> <td>Year:</td><td>{{movie._source.Year}}</td> </tr>
+                <tr> <td>Rated:</td><td>{{movie._source.Rated}}</td> </tr>
+                <tr> <td>Released:</td><td>{{movie._source.Released}}</td> </tr>
+                <tr> <td>Runtime:</td><td>{{movie._source.Runtime}}</td> </tr>
+                <tr> <td>Genre:</td><td>{{movie._source.Genre}}</td> </tr>
+                <tr> <td>Director:</td><td>{{movie._source.Director}}</td> </tr>
+                <tr> <td>Writer:</td><td>{{movie._source.Writer}}</td> </tr>
+                <tr> <td>Actors:</td><td>{{movie._source.Actors}}</td> </tr>
+                <tr> <td>Language:</td><td>{{movie._source.Language}}</td> </tr>
+                <tr> <td>Country:</td><td>{{movie._source.Country}}</td> </tr>
+                <tr> <td>Awards:</td><td>{{movie._source.Awards}}</td> </tr>
+                <tr> <td>Metascore:</td><td>{{movie._source.Metascore}}</td> </tr>
+                <tr> <td>imdbRating:</td><td>{{movie._source.imdbRating}}</td> </tr>
+                <tr> <td>imdbVotes:</td><td>{{movie._source.imdbVotes}}</td> </tr>
+                <tr> <td>imdbID:</td><td>{{movie._source.imdbID}}</td> </tr>
+                <tr> <td>
+                    <button ng-click="counta = (counta +1)%2" ng-init="counta=0">
+                        Plot:
+                    </button></td>
+
+                </td> <td>
+                    <div ng-show="counta">
+                        {{movie._source.Plot}}
+                    </div>
+                </tr>
+            </table>
+
+            </div>
+    </div>
+
+
+
+
     <br>
     <br>
     <br>
 
 
-    Search: <br>
-    <li ng-repeat="movie in movies">{{movie | json}} </li><br><br><br>
-    {{number}}          ///the number of all elements in library
-    <br><br>
-    {{movie1._source.Title}}   ///the get command of the 1 movie <br><br><br>
-    {{clusterState | json}}
-    {{error }}<br>
-    {{error2}}<br>
+
     <br>
-    <br>Test of query syntax:
-    {{movietest | json}}
+    <button ng-click="countb = (countb +1)%2" ng-init="countb=0">
+        Cluster-State
+    </button></td>
+    <div ng-show="countb">
+        {{clusterState | json}}
+        {{error }}<br>
+        {{error2}}<br>
+    </div>
+
 
 </div>
 </body>
