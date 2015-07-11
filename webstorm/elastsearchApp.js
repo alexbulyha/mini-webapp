@@ -14,25 +14,84 @@ elastsearchApp.controller('elastCtrl', function($scope, client, esFactory) {
 
     elastCtrl.search = function () {
         $scope.lastsearchterm = elastCtrl.searchterm;
-        client.search({
-            index: 'library',
-            type: 'movies',
-            body: {
-                query: {
-                    match: {
-                        Title: $scope.lastsearchterm
-                    }
-                }
-            }
-        }).then(function(resp) {
-            $scope.movies = resp.hits.hits;
-        }, function (err) {
-            console.trace(err.message);
-        })  ;
 
+        switch ($scope.querytype) {
+
+            case 'Actor':
+                client.search({
+                    index: 'library',
+                    type: 'movies',
+                    body: {
+                        query: {
+                            match: {
+                                Actor : $scope.lastsearchterm
+                            }
+                        }
+                    }
+                }).then(function(resp) {
+                    $scope.movies = resp.hits.hits;
+                }, function (err) {
+                    console.trace(err.message);
+                })  ;
+                break;
+
+            case 'Genre':
+                client.search({
+                    index: 'library',
+                    type: 'movies',
+                    body: {
+                        query: {
+                            match: {
+                                Genre : $scope.lastsearchterm
+                            }
+                        }
+                    }
+                }).then(function(resp) {
+                    $scope.movies = resp.hits.hits;
+                }, function (err) {
+                    console.trace(err.message);
+                })  ;
+                break;
+
+            case 'Plot':
+                client.search({
+                    index: 'library',
+                    type: 'movies',
+                    body: {
+                        query: {
+                            match: {
+                                Plot : $scope.lastsearchterm
+                            }
+                        }
+                    }
+                }).then(function(resp) {
+                    $scope.movies = resp.hits.hits;
+                }, function (err) {
+                    console.trace(err.message);
+                })  ;
+                break;
+
+            default:
+                client.search({
+                    index: 'library',
+                    type: 'movies',
+                    body: {
+                        query: {
+                            match: {
+                                Title : $scope.lastsearchterm
+                            }
+                        }
+                    }
+                }).then(function(resp) {
+                    $scope.movies = resp.hits.hits;
+                }, function (err) {
+                    console.trace(err.message);
+                })  ;
+                break;
+
+        }
 
         elastCtrl.searchterm = '';
-
 
     };
 
