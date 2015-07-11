@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html ng-app="elastsearchApp">
+<html ng-app="elastsearchApp" >
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -14,7 +14,8 @@
     <link href="webApp.css" rel="stylesheet">
 
 </head>
-<body ng-controller="elastCtrl as elastCtrl">
+<body ng-controller="elastCtrl as elastCtrl" class="full">
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -26,27 +27,45 @@
             </button>
             <a class="navbar-brand" href="#">Movie Library</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
+        <div id="navbar" class="navbar-collapse collapse" >
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Log-in</a></li>
+                <a class="btn btn-primary dropdown-toggle" style="margin-top:8px;"  data-toggle="dropdown" href="#"> Log in <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <form action="/login" method="post">
+                        <div>
+                            <label>Username:</label>
+                            <input type="text" name="username" />
+                            <br/>
+                        </div>
+                        <div>
+                            <label>Password:</label>
+                            <input type="password" name="password" />
+                        </div>
+                        <div>
+                            <input type="submit" value="Submit" />
+                        </div>
+                    </form>
+
+                </ul>
                 <li><a href="#">Credits</a></li>
+
             </ul>
 
 
             <form class="navbar-form" ng-submit="elastCtrl.search()">
                 <div class="dropdown navbar-nav navbar-left" style="margin-right:10px; margin-left: 1px;">
                     <a class="btn btn-primary dropdown-toggle"  data-toggle="dropdown" href="#"> Search in <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                        <button ng-click="querytype='Title'">Title</button>
-                        <button ng-click="querytype='Genre'">Genre</button>
-                        <button ng-click="querytype='Actor'">Actor</button>
-                        <button ng-click="querytype='Plot'">Plot</button>
+                    <ul class="Dmenu dropdown-menu " role="menu" aria-labelledby="dLabel">
+
+                        <li><button class="SButton btn-block" ng-click="querytype='Title'">Title</button></li>
+                        <li><button class="SButton btn-block" ng-click="querytype='Genre'">Genre</button></li>
+                        <li><button class="SButton btn-block" ng-click="querytype='Actor'">Actor</button></li>
+                        <li><button class="SButton btn-block" ng-click="querytype='Plot'">Plot</button></li>
                     </ul>
 
                 </div>
-                <input type="text" class="form-control" ng-model="elastCtrl.searchterm"  size="30"
-                       placeholder="Movie Title">
-                <button class="btn btn-default" style="margin-top:1px;" type="submit"><i class="glyphicon glyphicon-search"></i> Search </button>
+                <input type="text" class="form-control" ng-model="elastCtrl.searchterm"  size="30" placeholder="Keyword ...">
+                <button class="hiddenButton"  type="submit"><img src="Lupe_small.png"></button>
             </form>
 
         </div>
@@ -59,9 +78,9 @@
 
 
 
-    <h4 class="sub-header">Search Results</h4>
+    <h4>Search Results:</h4>
     <div ng-repeat="movie in movies">
-        <button ng-click="count = (count +1)%2" ng-init="count=0">
+        <button class="MovieButton btn-block" ng-click="count = (count +1)%2" ng-init="count=0">
             {{movie._source.Title}}
         </button>
         <div ng-show="count">
@@ -82,14 +101,14 @@
                 <tr> <td>imdbVotes:</td><td>{{movie._source.imdbVotes}}</td> </tr>
                 <tr> <td>imdbID:</td><td>{{movie._source.imdbID}}</td> </tr>
                 <tr> <td>
-                    <button ng-click="counta = (counta +1)%2" ng-init="counta=0">
+
                         Plot:
-                    </button></td>
+                    </td>
 
                 </td> <td>
-                    <div ng-show="counta">
+
                         {{movie._source.Plot}}
-                    </div>
+
                 </tr>
             </table>
 
@@ -106,7 +125,7 @@
 
 
     <br>
-    <button ng-click="countb = (countb +1)%2" ng-init="countb=0">
+    <button class="hiddenButton" ng-click="countb = (countb +1)%2" ng-init="countb=0">
         Cluster-State
     </button></td>
     <div ng-show="countb">
@@ -117,6 +136,7 @@
 
 
 </div>
+
 </body>
 </html>
 

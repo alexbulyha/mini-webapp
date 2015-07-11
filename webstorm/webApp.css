@@ -9,16 +9,99 @@ body {
 
 
 
-
 .sub-header {
     padding-bottom: 10px;
     border-bottom: 1px solid #eee;
 }
 
+.full {
+    background: url('bg2.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
 
 .navbar-fixed-top {
     border: 0;
 }
+
+/* Buttons */
+.MovieButton {
+    box-shadow: 0px 6px 11px -3px #276873;
+
+    background:linear-gradient(to bottom, #219ecc 5%, #6dabb5 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#219ecc', endColorstr='#6dabb5',GradientType=0);
+    background-color:#219ecc;
+
+    border-radius:5px;
+    border:2px solid #29668f;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Courier New;
+    font-size:15px;
+    font-weight:bold;
+    padding:10px 20px;
+    text-decoration:none;
+    text-shadow:0px 2px 0px #3d768a;
+}
+.MovieButton:hover {
+    background:linear-gradient(to bottom, #6dabb5 5%, #219ecc 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6dabb5', endColorstr='#219ecc',GradientType=0);
+    background-color:#6dabb5;
+}
+.MovieButton:active {
+    position:relative;
+    top:1px;
+}
+
+.SButton {
+
+    background-color:#2c5380;
+    border:2px solid #2c5380;
+    color:#FFFFFF;
+    font-family:Arial;
+    font-size:14px;
+    text-decoration:none;
+}
+.SButton:hover {
+    background-color:#428bca;
+}
+.SButton:active {
+    position: relative;
+    top: 1px;
+}
+
+
+.hiddenButton {
+    background-color:transparent;
+    border:2px solid transparent;
+    color:#000000;
+    font-family:Arial;
+    font-size:14px;
+    text-decoration:none;
+    margin-left: -9px;
+    margin-top: -2px;
+}
+
+
+.Dmenu {
+    background-color:#2c5380;
+    border:2px solid transparent;
+    box-shadow: 0px 0px 0px 0px #000000;
+    width: 50px;
+
+}
+
+.Lupe {
+    background: url('Lupe.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
 
 
 

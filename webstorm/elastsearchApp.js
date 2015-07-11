@@ -109,22 +109,6 @@ elastsearchApp.controller('elastCtrl', function($scope, client, esFactory) {
     });
 
 
-    client.search({     //testsearch
-        index: 'library',
-        type: 'movies',
-        body: {
-            query: {
-                match: {
-                    Title: 'Godfather'
-                }
-            }
-        }
-    }).then(function(resp) {
-        $scope.movietest = resp.hits.hits;
-    }, function (err) {
-        console.trace(err.message);
-    })
-
 
     client.cluster.state({
         metric: [
@@ -153,14 +137,6 @@ elastsearchApp.controller('elastCtrl', function($scope, client, esFactory) {
 
 
 
-    client.get({
-        index: 'library',
-        type: 'movies',
-        id: 1
-    }).then (function (resp) {
-        $scope.movie1 = resp;
-    });
-
-
 });
+
 
